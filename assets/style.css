@@ -1,3 +1,24 @@
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "navbar navbar navbar"
+    "categorias main main"
+    "footer footer footer";
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto 2fr auto;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Áreas específicas */
+.navbar {
+  grid-area: navbar;
+  background-color: rgb(0, 128, 0) !important;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* Reset de márgenes y rellenos */
 * {
   padding: 0;
@@ -24,25 +45,25 @@
   margin: 0;
 }
 
-.grid-container {
-  display: flex;
-  flex-wrap: wrap;
-  display: grid;
-  grid-template-columns: auto 70% auto;
-  gap: 20px;
-  justify-content: center;
-  align-items: start;
-  padding: 20px;
+.grid-item:first-child {
+  grid-area: categorias;
 }
 
-.grid-item {
-  background-color: #f5f5f5;
-  padding: 15px;
-  border-radius: 5px;
+.grid-item:last-child {
+  grid-area: main;
 }
 
+footer {
+  grid-area: footer;
+  background-color: rgb(0, 128, 0);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Estilo para las categorías */
 .categorias {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
@@ -51,29 +72,25 @@
   background-color: white;
   margin-bottom: 10px;
   border-radius: 4px;
-}
-
-.categorias li a {
-  text-decoration: none;
-  color: white;
   font-weight: bold;
+  color: black;
+  cursor: pointer;
 }
 
 .categorias li:hover {
-  background-color: rgb(0, 128, 0) !important; /* Efecto al pasar el ratón */
+  background-color: rgb(0, 128, 0) !important;
+  color: white;
 }
 
+/* Productos en el contenido principal */
 .main-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+  display: grid;
   gap: 20px;
   padding: 20px;
 }
 
 .product-card {
-  flex: 1 1 (100%);
-  width: 200px;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -111,4 +128,5 @@
 
 .product-card button:hover {
   background-color: rgb(0, 128, 0) !important;
+  color: white;
 }
